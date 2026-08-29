@@ -6,6 +6,8 @@ from pygame.locals import *
 from sys import exit
 # Importando biblioteca Random
 import random
+# Importanto biblioteca Time para controlar a cadência de incremento do eixo x relativo à Picanha.
+import time
 
 # Iniciando Pygame
 pygame.init()
@@ -35,6 +37,9 @@ sprite_picanha = pygame.transform.scale(sprite_picanha_original, (largura_picanh
 # Posição Lula
 x, y = 136, 136
 # Posição picanha
+
+def moverPicanha():
+    x_picanha += 5
 x_picanha, y_picanha = x+15, y+15 # Destartes, a picanha estará sempre adjacente ao Lula com adicional de 15 a sua posição original desse.
 
 # Definindo dimensões do retângulo relativo ao Lula
@@ -44,7 +49,10 @@ largura_picanha, altura_picanha = sprite_lula.get_width(), sprite_lula.get_heigh
 
 # Frame do jogo
 clock = pygame.time.Clock()
-tecla = pygame
+
+_ = False
+
+
 
 while True:
     # Controlar frame
@@ -75,11 +83,17 @@ while True:
         # ----------------------Habilidades----------------------
         # Jogar picanha
         elif pygame.key.get_pressed()[K_p]:
-            x_picanha, y_picanha = x, y # Picanha logrará a mesma posição de Lula
-            x_picanha += 5 # Eixo 'x' relativo à picanha será incrementado valor 5
-            print(f'Picanha:{x_picanha}') # Teste
-            print(f'Lula:{x}') # Teste
+            time.sleep(0.05) # Controlar o tempo de incremento
+            #x_picanha += 5 # Eixo 'x' relativo à picanha será incrementado valor 5
+            _ = True
             
+        elif _:
+                moverPicanha()
+                
+        
+                if x_picanha > 300:
+                    print("Picanha, para!")
+                    _ = False
           
     # Exibir cenário principal
     tela.blit(cenario_principal, (0,0))
