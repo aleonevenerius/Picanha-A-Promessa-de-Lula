@@ -8,6 +8,8 @@ from sys import exit
 import random
 # Importanto biblioteca Time para controlar a cadência de incremento do eixo x relativo à Picanha.
 import time
+# Importando o arquivo Python cujo paradigma de programção orientação a objeto se encontra
+import OOP
 
 # Iniciando Pygame
 pygame.init()
@@ -37,9 +39,6 @@ sprite_picanha = pygame.transform.scale(sprite_picanha_original, (largura_picanh
 # Posição Lula
 x, y = 136, 136
 # Posição picanha
-
-def moverPicanha():
-    x_picanha += 5
 x_picanha, y_picanha = x+15, y+15 # Destartes, a picanha estará sempre adjacente ao Lula com adicional de 15 a sua posição original desse.
 
 # Definindo dimensões do retângulo relativo ao Lula
@@ -52,7 +51,8 @@ clock = pygame.time.Clock()
 
 _ = False
 
-
+def moverPicanha():
+    x_picanha += 5
 
 while True:
     # Controlar frame
@@ -93,7 +93,7 @@ while True:
         
                 if x_picanha > 300:
                     print("Picanha, para!")
-                    _ = False
+                    _ = Fa
           
     # Exibir cenário principal
     tela.blit(cenario_principal, (0,0))
